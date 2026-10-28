@@ -10,15 +10,11 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { LogBox } from 'react-native';
 
 import { useAppStore } from '@/store/app-store';
 import colors from '@/theme/colors';
 
 SplashScreen.preventAutoHideAsync();
-
-// Raised inside a library (not Cipher code) on React Native 0.88.
-LogBox.ignoreLogs(['ImageBackground is deprecated']);
 
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
