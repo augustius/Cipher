@@ -1,0 +1,241 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CipherLoop - Secret Code Setup</title>
+<!-- Material Symbols Outlined font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#18181b",
+            "surface-container": "#121215",
+            "surface-container-lowest": "#09090b",
+            "surface-dim": "#0c0c0f",
+            "on-surface-variant": "#a1a1aa",
+            "inverse-surface": "#fafafa",
+            "surface-container-low": "#0f0f12",
+            "on-secondary-fixed": "#18181b",
+            "on-surface": "#fafafa",
+            "on-primary": "#0a0012",
+            "secondary-fixed": "#a1a1aa",
+            "tertiary-fixed": "#bbf7d0",
+            "surface": "#0c0c0f",
+            "secondary-container": "#27272a",
+            "on-secondary-container": "#a1a1aa",
+            "outline-variant": "#27272a",
+            "outline": "#52525b",
+            "tertiary-container": "#065f46",
+            "secondary-fixed-dim": "#71717a",
+            "on-error-container": "#fca5a5",
+            "on-primary-fixed-variant": "#5b21b6",
+            "error": "#ef4444",
+            "surface-container-highest": "#1e1e22",
+            "on-secondary-fixed-variant": "#3f3f46",
+            "on-primary-container": "#ede9fe",
+            "surface-variant": "#18181b",
+            "on-error": "#1a0000",
+            "on-tertiary": "#001a12",
+            "primary": "#a78bfa",
+            "error-container": "#3b1111",
+            "inverse-primary": "#5b21b6",
+            "secondary": "#71717a",
+            "inverse-on-surface": "#09090b",
+            "surface-tint": "#a78bfa",
+            "on-tertiary-container": "#bbf7d0",
+            "tertiary": "#34d399",
+            "background": "#09090b",
+            "tertiary-fixed-dim": "#6ee7b7",
+            "on-primary-fixed": "#2e1065",
+            "primary-fixed-dim": "#c4b5fd",
+            "primary-container": "#7c3aed",
+            "on-tertiary-fixed": "#003318",
+            "on-tertiary-fixed-variant": "#047857",
+            "surface-container-high": "#18181b",
+            "on-background": "#fafafa",
+            "on-secondary": "#09090b",
+            "primary-fixed": "#ede9fe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Geist", "sans-serif"],
+            "display": ["Geist", "sans-serif"],
+            "body": ["Geist", "sans-serif"],
+            "label": ["Geist", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen flex flex-col justify-between selection:bg-primary selection:text-on-primary">
+<!-- TOP APP BAR (Shared Component faithfully mapped from JSON) -->
+<header class="w-full flex items-center justify-between px-4 py-3 bg-surface border-b border-outline-variant select-none sticky top-0 z-40">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-xl flex items-center justify-center p-1.5 rounded-lg bg-surface-container border border-outline-variant">lock</span>
+<span class="font-headline text-lg font-bold tracking-tight text-primary">Cipher</span>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Restart round" class="flex items-center justify-center p-2 rounded-lg text-secondary hover:text-primary hover:bg-surface-container active:opacity-80 transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-xl">restart_alt</span>
+</button>
+</div>
+</header>
+<!-- MAIN VIEW CANVAS: Confidential Setup Flow -->
+<main class="flex-1 w-full max-w-md mx-auto px-4 py-5 flex flex-col items-center justify-between gap-6">
+<!-- Progress & Confidential Badge Header -->
+<div class="w-full flex flex-col items-center gap-3">
+<!-- Pass & Play Badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-mono text-xs font-semibold tracking-wider text-on-surface-variant uppercase">PASS &amp; PLAY • 1 OF 4</span>
+</div>
+<!-- Headline & Subtext -->
+<div class="text-center px-2 space-y-1">
+<h1 class="font-headline text-xl sm:text-2xl font-bold tracking-tight text-on-surface">Player 1 — Enter Secret Code</h1>
+<p class="font-body text-xs sm:text-sm text-on-surface-variant max-w-xs mx-auto leading-relaxed">Keep screen hidden. Player 2 will try to guess this code.</p>
+</div>
+<!-- Notice Banner -->
+<div class="w-full mt-1 flex items-center gap-2.5 px-3.5 py-2.5 rounded-lg bg-surface-container-low border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-base shrink-0">info</span>
+<p class="font-label text-xs text-on-surface-variant leading-tight">4 unique digits (0-9). No duplicates allowed.</p>
+</div>
+</div>
+<!-- CODE DISPLAY SECTION -->
+<div class="w-full flex flex-col items-center gap-3">
+<!-- 4 Digit Slots: [ 8 ] [ 3 ] [ 1 ] [ _ ] -->
+<div class="flex items-center justify-center gap-3 sm:gap-4 w-full">
+<!-- Slot 1 (Filled: 8) -->
+<div class="w-14 h-16 sm:w-16 sm:h-20 rounded-lg bg-surface-container border border-outline-variant flex flex-col items-center justify-center shadow-inner relative group">
+<span class="font-mono text-2xl sm:text-3xl font-bold text-on-surface digit-val" data-val="8">8</span>
+<span class="absolute bottom-2 text-[10px] font-mono text-secondary">#1</span>
+</div>
+<!-- Slot 2 (Filled: 3) -->
+<div class="w-14 h-16 sm:w-16 sm:h-20 rounded-lg bg-surface-container border border-outline-variant flex flex-col items-center justify-center shadow-inner relative group">
+<span class="font-mono text-2xl sm:text-3xl font-bold text-on-surface digit-val" data-val="3">3</span>
+<span class="absolute bottom-2 text-[10px] font-mono text-secondary">#2</span>
+</div>
+<!-- Slot 3 (Filled: 1) -->
+<div class="w-14 h-16 sm:w-16 sm:h-20 rounded-lg bg-surface-container border border-outline-variant flex flex-col items-center justify-center shadow-inner relative group">
+<span class="font-mono text-2xl sm:text-3xl font-bold text-on-surface digit-val" data-val="1">1</span>
+<span class="absolute bottom-2 text-[10px] font-mono text-secondary">#3</span>
+</div>
+<!-- Slot 4 (Active awaiting digit: _) -->
+<div class="w-14 h-16 sm:w-16 sm:h-20 rounded-lg bg-surface-container-high border-2 border-primary flex flex-col items-center justify-center relative shadow-sm">
+<span class="font-mono text-2xl sm:text-3xl font-bold text-primary animate-pulse">_</span>
+<span class="absolute bottom-2 text-[10px] font-mono text-primary font-medium">#4</span>
+</div>
+</div>
+<!-- Visibility Toggle Button -->
+<button class="mt-1 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-secondary hover:text-primary hover:bg-surface-container transition-colors" id="toggle-visibility" type="button">
+<span class="material-symbols-outlined text-base" id="visibility-icon">visibility</span>
+<span id="visibility-label" class="">Hide / Show digits</span>
+</button>
+</div>
+<!-- NUMERIC KEYPAD -->
+<div class="w-full max-w-xs grid grid-cols-3 gap-2.5 sm:gap-3 select-none">
+<!-- 1 (Used/Disabled) -->
+<button class="h-13 py-3 rounded-lg bg-surface-container-low border border-outline-variant text-secondary opacity-35 cursor-not-allowed flex flex-col items-center justify-center" disabled="" type="button">
+<span class="font-mono text-lg font-medium">1</span>
+<span class="text-[9px] uppercase tracking-wider text-secondary">Used</span>
+</button>
+<!-- 2 (Available) -->
+<button class="h-13 py-3 rounded-lg bg-surface-container border border-outline-variant text-on-surface hover:border-primary hover:text-primary active:bg-surface-container-highest transition-all duration-100 flex flex-col items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary" type="button">
+<span class="font-mono text-xl font-medium">2</span>
+</button>
+<!-- 3 (Used/Disabled) -->
+<button class="h-13 py-3 rounded-lg bg-surface-container-low border border-outline-variant text-secondary opacity-35 cursor-not-allowed flex flex-col items-center justify-center" disabled="" type="button">
+<span class="font-mono text-lg font-medium">3</span>
+<span class="text-[9px] uppercase tracking-wider text-secondary">Used</span>
+</button>
+<!-- 4 (Available) -->
+<button class="h-13 py-3 rounded-lg bg-surface-container border border-outline-variant text-on-surface hover:border-primary hover:text-primary active:bg-surface-container-highest transition-all duration-100 flex flex-col items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary" type="button">
+<span class="font-mono text-xl font-medium">4</span>
+</button>
+<!-- 5 (Available) -->
+<button class="h-13 py-3 rounded-lg bg-surface-container border border-outline-variant text-on-surface hover:border-primary hover:text-primary active:bg-surface-container-highest transition-all duration-100 flex flex-col items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary" type="button">
+<span class="font-mono text-xl font-medium">5</span>
+</button>
+<!-- 6 (Available) -->
+<button class="h-13 py-3 rounded-lg bg-surface-container border border-outline-variant text-on-surface hover:border-primary hover:text-primary active:bg-surface-container-highest transition-all duration-100 flex flex-col items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary" type="button">
+<span class="font-mono text-xl font-medium">6</span>
+</button>
+<!-- 7 (Available) -->
+<button class="h-13 py-3 rounded-lg bg-surface-container border border-outline-variant text-on-surface hover:border-primary hover:text-primary active:bg-surface-container-highest transition-all duration-100 flex flex-col items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary" type="button">
+<span class="font-mono text-xl font-medium">7</span>
+</button>
+<!-- 8 (Used/Disabled) -->
+<button class="h-13 py-3 rounded-lg bg-surface-container-low border border-outline-variant text-secondary opacity-35 cursor-not-allowed flex flex-col items-center justify-center" disabled="" type="button">
+<span class="font-mono text-lg font-medium">8</span>
+<span class="text-[9px] uppercase tracking-wider text-secondary">Used</span>
+</button>
+<!-- 9 (Available) -->
+<button class="h-13 py-3 rounded-lg bg-surface-container border border-outline-variant text-on-surface hover:border-primary hover:text-primary active:bg-surface-container-highest transition-all duration-100 flex flex-col items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary" type="button">
+<span class="font-mono text-xl font-medium">9</span>
+</button>
+<!-- CLEAR ACTION -->
+<button class="h-13 py-3 rounded-lg bg-surface-container-low border border-outline-variant text-on-surface-variant hover:text-error hover:border-error active:bg-surface-container transition-all duration-100 flex flex-col items-center justify-center" type="button">
+<span class="font-mono text-xs uppercase tracking-wider font-semibold">Clear</span>
+</button>
+<!-- 0 (Available) -->
+<button class="h-13 py-3 rounded-lg bg-surface-container border border-outline-variant text-on-surface hover:border-primary hover:text-primary active:bg-surface-container-highest transition-all duration-100 flex flex-col items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary" type="button">
+<span class="font-mono text-xl font-medium">0</span>
+</button>
+<!-- BACKSPACE ACTION -->
+<button class="h-13 py-3 rounded-lg bg-surface-container-low border border-outline-variant text-on-surface-variant hover:text-on-surface hover:border-outline active:bg-surface-container transition-all duration-100 flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-lg">backspace</span>
+</button>
+</div>
+<!-- LOCK CODE & PROGRESS FOOTER -->
+<div class="w-full flex flex-col items-center gap-3 mt-2">
+<!-- Action Primary Button -->
+<button class="w-full py-3.5 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-headline font-semibold text-sm tracking-tight flex items-center justify-center gap-2 transition-all duration-150 active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background" type="button">
+<span class="">Lock Code &amp; Pass to Player 2 →</span>
+</button>
+<!-- Subtle Progress Bar and Label -->
+<div class="w-full space-y-1.5 px-1">
+<div class="flex items-center justify-between text-[11px] font-mono text-secondary">
+<span class="">Player 1 of 4 configured (25%)</span>
+<span class="text-tertiary">Step 1/4</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-300" style="width: 25%;"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- BOTTOM NAV BAR (Shared Component from JSON, active state mapped to Pass) -->
+
+<!-- Interactive script for toggle digits & micro-animations -->
+<script>
+    const toggleBtn = document.getElementById('toggle-visibility');
+    const digits = document.querySelectorAll('.digit-val');
+    const icon = document.getElementById('visibility-icon');
+    let isHidden = false;
+
+    toggleBtn.addEventListener('click', () => {
+      isHidden = !isHidden;
+      digits.forEach(slot => {
+        if (isHidden) {
+          slot.dataset.saved = slot.textContent;
+          slot.textContent = '•';
+        } else {
+          slot.textContent = slot.dataset.val || '8';
+        }
+      });
+      icon.textContent = isHidden ? 'visibility_off' : 'visibility';
+    });
+  </script>
+
+
+</body></html>

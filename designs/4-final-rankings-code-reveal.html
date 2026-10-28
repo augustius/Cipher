@@ -1,0 +1,424 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CipherLoop - Final Rankings &amp; All-Player Standings</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&amp;family=Geist+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-bright": "#18181b",
+            "surface-container": "#121215",
+            "surface-container-lowest": "#09090b",
+            "surface-dim": "#0c0c0f",
+            "on-surface-variant": "#a1a1aa",
+            "inverse-surface": "#fafafa",
+            "surface-container-low": "#0f0f12",
+            "on-secondary-fixed": "#18181b",
+            "on-surface": "#fafafa",
+            "on-primary": "#0a0012",
+            "secondary-fixed": "#a1a1aa",
+            "tertiary-fixed": "#bbf7d0",
+            "surface": "#0c0c0f",
+            "secondary-container": "#27272a",
+            "on-secondary-container": "#a1a1aa",
+            "outline-variant": "#27272a",
+            "outline": "#52525b",
+            "tertiary-container": "#065f46",
+            "secondary-fixed-dim": "#71717a",
+            "on-error-container": "#fca5a5",
+            "on-primary-fixed-variant": "#5b21b6",
+            "error": "#ef4444",
+            "surface-container-highest": "#1e1e22",
+            "on-secondary-fixed-variant": "#3f3f46",
+            "on-primary-container": "#ede9fe",
+            "surface-variant": "#18181b",
+            "on-error": "#1a0000",
+            "on-tertiary": "#001a12",
+            "primary": "#a78bfa",
+            "error-container": "#3b1111",
+            "inverse-primary": "#5b21b6",
+            "secondary": "#71717a",
+            "inverse-on-surface": "#09090b",
+            "surface-tint": "#a78bfa",
+            "on-tertiary-container": "#bbf7d0",
+            "tertiary": "#34d399",
+            "background": "#09090b",
+            "tertiary-fixed-dim": "#6ee7b7",
+            "on-primary-fixed": "#2e1065",
+            "primary-fixed-dim": "#c4b5fd",
+            "primary-container": "#7c3aed",
+            "on-tertiary-fixed": "#003318",
+            "on-tertiary-fixed-variant": "#047857",
+            "surface-container-high": "#18181b",
+            "on-background": "#fafafa",
+            "on-secondary": "#09090b",
+            "primary-fixed": "#ede9fe"
+          },
+          fontFamily: {
+            headline: ["Geist", "sans-serif"],
+            display: ["Geist", "sans-serif"],
+            body: ["Geist", "sans-serif"],
+            label: ["Geist", "sans-serif"],
+            mono: ["Geist Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined[data-weight="fill"] {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Subtle scanline and grid background */
+    .bg-grid-cyber {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(39, 39, 42, 0.35) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(39, 39, 42, 0.35) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- TOP APP BAR (from Shared Components JSON) -->
+<header class="w-full flex items-center justify-between px-4 py-3 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center w-8 h-8 rounded bg-surface-container border border-outline-variant text-primary">
+<span class="material-symbols-outlined text-lg">lock</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline text-lg font-bold tracking-tight text-primary dark:text-primary">Cipher</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono tracking-tight font-medium bg-tertiary-container text-on-tertiary-container uppercase border border-tertiary/20">Match Completed</span>
+</div>
+</div>
+</div>
+<!-- Desktop Navigation Anchors -->
+<div class="hidden md:flex items-center gap-6">
+<button class="flex items-center gap-1.5 text-secondary dark:text-secondary hover:text-primary hover:bg-surface-container dark:hover:bg-surface-container transition-colors duration-150 px-3 py-1.5 rounded text-sm font-medium">
+<span class="material-symbols-outlined text-base">sync</span>
+<span class="">Loop</span>
+</button>
+<button class="flex items-center gap-1.5 text-secondary dark:text-secondary hover:text-primary hover:bg-surface-container dark:hover:bg-surface-container transition-colors duration-150 px-3 py-1.5 rounded text-sm font-medium">
+<span class="material-symbols-outlined text-base">dialpad</span>
+<span class="">Play</span>
+</button>
+<button class="flex items-center gap-1.5 text-secondary dark:text-secondary hover:text-primary hover:bg-surface-container dark:hover:bg-surface-container transition-colors duration-150 px-3 py-1.5 rounded text-sm font-medium">
+<span class="material-symbols-outlined text-base">devices</span>
+<span class="">Pass</span>
+</button>
+<button class="flex items-center gap-1.5 text-primary dark:text-primary font-medium bg-surface-container-highest dark:bg-surface-container-highest px-3 py-1.5 rounded text-sm">
+<span class="material-symbols-outlined text-base" data-weight="fill">trophy</span>
+<span class="">Ranks</span>
+</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center w-8 h-8 rounded text-secondary hover:text-primary hover:bg-surface-container dark:hover:bg-surface-container transition-colors duration-150 active:opacity-80" title="Restart Session">
+<span class="material-symbols-outlined text-xl">restart_alt</span>
+</button>
+</div>
+</header>
+<!-- MAIN VIEWPORT CONTAINER -->
+<main class="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 bg-grid-cyber pb-8">
+<!-- Hero Header Section -->
+<div class="mb-8 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-outline-variant pb-6">
+<div>
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-tertiary text-xs font-mono font-medium mb-3">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="">PROTOCOL COMPLETE • 4/4 TARGETS DECRYPTED</span>
+</div>
+<h1 class="font-headline text-3xl sm:text-4xl font-extrabold tracking-tight text-on-surface">
+          All Codes Decrypted!
+        </h1>
+<p class="text-on-surface-variant text-sm sm:text-base mt-1.5">
+          Ranked by who solved their target code first
+        </p>
+</div>
+<!-- Match Metadata summary pill -->
+<div class="flex items-center justify-center md:justify-end gap-3 font-mono text-xs text-secondary-fixed">
+<div class="bg-surface-container px-3 py-1.5 rounded border border-outline-variant">
+<span class="text-on-surface-variant">Rounds:</span> <span class="text-on-surface font-semibold">6</span>
+</div>
+<div class="bg-surface-container px-3 py-1.5 rounded border border-outline-variant">
+<span class="text-on-surface-variant">Time:</span> <span class="text-on-surface font-semibold">04:12</span>
+</div>
+<div class="bg-surface-container px-3 py-1.5 rounded border border-outline-variant">
+<span class="text-on-surface-variant">Total Guesses:</span> <span class="text-on-surface font-semibold">23</span>
+</div>
+</div>
+</div>
+<!-- MAIN BENTO CONTENT GRID -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- COLUMN LEFT & CENTER: Standings & Leaderboard Podium (7 cols) -->
+<section class="lg:col-span-7 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-sm font-semibold tracking-wide text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base" data-weight="fill">trophy</span>
+            FINAL STANDINGS
+          </h2>
+<span class="text-xs font-mono text-secondary-fixed">LOOP RESOLUTION SPEED</span>
+</div>
+<!-- Leaderboard Stack -->
+<div class="flex flex-col gap-3">
+<!-- 1st Place: Winner (Player 1) -->
+<div class="group relative bg-surface-container rounded-lg border border-primary/40 p-4 transition-all duration-200 hover:border-primary hover:bg-surface-container-high shadow-[0_0_20px_rgba(167,139,250,0.06)]">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<!-- Gold Badge / Rank 1 -->
+<div class="relative flex items-center justify-center w-11 h-11 rounded-md bg-surface-container-highest border border-primary/60 font-mono font-bold text-base text-primary">
+                  1ST
+                  <span class="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] text-on-primary font-bold">
+<span class="material-symbols-outlined text-xs" data-weight="fill">trophy</span>
+</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-base text-on-surface">Player 1</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-tertiary/15 text-tertiary border border-tertiary/30">
+                      Winner
+                    </span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5">
+                    Cracked <span class="font-medium text-on-surface">Player 4</span>'s code in <span class="text-primary font-mono font-medium">Round 2</span>
+</p>
+</div>
+</div>
+<!-- Stat Pill -->
+<div class="text-right">
+<div class="font-mono text-base font-bold text-tertiary">3 guesses</div>
+<div class="text-[11px] font-mono text-secondary-fixed">Target: [ 4 9 3 0 ]</div>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-outline-variant flex items-center justify-between text-xs font-mono text-secondary-fixed">
+<span class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-sm">bolt</span> Rapid breach rate
+              </span>
+<span class="">Efficiency: 100%</span>
+</div>
+</div>
+<!-- 2nd Place: Player 3 -->
+<div class="relative bg-surface-container rounded-lg border border-outline-variant p-4 transition-all duration-200 hover:border-outline hover:bg-surface-container-high">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<!-- Silver Badge / Rank 2 -->
+<div class="flex items-center justify-center w-11 h-11 rounded-md bg-surface-container-highest border border-secondary font-mono font-bold text-base text-secondary-fixed">
+                  2ND
+                </div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-base text-on-surface">Player 3</span>
+<span class="inline-flex items-center px-1.5 py-0.2 rounded text-[10px] font-mono text-secondary-fixed border border-secondary/40">
+                      Silver
+                    </span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5">
+                    Cracked <span class="font-medium text-on-surface">Player 2</span>'s code in <span class="text-on-surface font-mono font-medium">Round 4</span>
+</p>
+</div>
+</div>
+<div class="text-right">
+<div class="font-mono text-base font-bold text-on-surface">5 guesses</div>
+<div class="text-[11px] font-mono text-secondary-fixed">Target: [ 7 4 0 9 ]</div>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-outline-variant flex items-center justify-between text-xs font-mono text-secondary-fixed">
+<span class="text-on-surface-variant">Methodical reduction</span>
+<span class="">Efficiency: 78%</span>
+</div>
+</div>
+<!-- 3rd Place: Player 4 -->
+<div class="relative bg-surface-container rounded-lg border border-outline-variant p-4 transition-all duration-200 hover:border-outline hover:bg-surface-container-high">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<!-- Bronze Badge / Rank 3 -->
+<div class="flex items-center justify-center w-11 h-11 rounded-md bg-surface-container-highest border border-outline font-mono font-bold text-base text-secondary">
+                  3RD
+                </div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline font-bold text-base text-on-surface">Player 4</span>
+<span class="inline-flex items-center px-1.5 py-0.2 rounded text-[10px] font-mono text-secondary border border-outline">
+                      Bronze
+                    </span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5">
+                    Cracked <span class="font-medium text-on-surface">Player 3</span>'s code in <span class="text-on-surface font-mono font-medium">Round 5</span>
+</p>
+</div>
+</div>
+<div class="text-right">
+<div class="font-mono text-base font-bold text-on-surface">7 guesses</div>
+<div class="text-[11px] font-mono text-secondary-fixed">Target: [ 2 6 8 1 ]</div>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-outline-variant flex items-center justify-between text-xs font-mono text-secondary-fixed">
+<span class="text-on-surface-variant">Contested decipher</span>
+<span class="">Efficiency: 54%</span>
+</div>
+</div>
+<!-- 4th Place: Player 2 -->
+<div class="relative bg-surface-container rounded-lg border border-outline-variant p-4 transition-all duration-200 hover:border-outline hover:bg-surface-container-high opacity-90">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3.5">
+<!-- 4th Rank -->
+<div class="flex items-center justify-center w-11 h-11 rounded-md bg-surface-container-lowest border border-outline-variant font-mono font-medium text-base text-secondary">
+                  4TH
+                </div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline font-semibold text-base text-on-surface">Player 2</span>
+<span class="inline-flex items-center px-1.5 py-0.2 rounded text-[10px] font-mono text-secondary-fixed border border-outline-variant bg-surface-container-lowest">
+                      Finished
+                    </span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5">
+                    Cracked <span class="font-medium text-on-surface">Player 1</span>'s code in <span class="text-on-surface font-mono font-medium">Round 6</span>
+</p>
+</div>
+</div>
+<div class="text-right">
+<div class="font-mono text-base font-bold text-on-surface-variant">8 guesses</div>
+<div class="text-[11px] font-mono text-secondary-fixed">Target: [ 8 3 1 5 ]</div>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-outline-variant flex items-center justify-between text-xs font-mono text-secondary-fixed">
+<span class="text-on-surface-variant">Final decryptor</span>
+<span class="">Efficiency: 42%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- COLUMN RIGHT: Secret Codes Revealed & Loop Structure (5 cols) -->
+<section class="lg:col-span-5 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-sm font-semibold tracking-wide text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">visibility</span>
+            SECRET CODES REVEALED
+          </h2>
+<span class="text-xs font-mono text-tertiary">VAULT EXPOSED</span>
+</div>
+<!-- Master Code Summary Card -->
+<div class="bg-surface-container rounded-lg border border-outline-variant p-4 flex flex-col gap-3">
+<div class="text-xs text-secondary-fixed font-mono pb-2 border-b border-outline-variant flex justify-between items-center">
+<span class="">TARGET LOOP: P1 → P4 → P3 → P2 → P1</span>
+<span class="material-symbols-outlined text-sm text-secondary">sync_alt</span>
+</div>
+<!-- P1 Secret Code Card -->
+<div class="bg-surface-container-low border border-outline-variant rounded p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-on-surface flex items-center gap-1.5 font-mono">
+<span class="w-2 h-2 rounded-full bg-primary"></span> P1 Code
+              </span>
+<span class="font-mono text-[11px] text-on-surface-variant">Cracked by <strong class="text-on-surface">P2</strong></span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest px-3 py-2 rounded border border-outline-variant">
+<div class="flex items-center gap-2 font-mono text-lg font-bold text-primary tracking-widest">
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">8</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">3</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">1</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">5</span>
+</div>
+<span class="text-xs font-mono text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span> Solved
+              </span>
+</div>
+</div>
+<!-- P2 Secret Code Card -->
+<div class="bg-surface-container-low border border-outline-variant rounded p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-on-surface flex items-center gap-1.5 font-mono">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span> P2 Code
+              </span>
+<span class="font-mono text-[11px] text-on-surface-variant">Cracked by <strong class="text-on-surface">P3</strong></span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest px-3 py-2 rounded border border-outline-variant">
+<div class="flex items-center gap-2 font-mono text-lg font-bold text-primary tracking-widest">
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">7</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">4</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">0</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">9</span>
+</div>
+<span class="text-xs font-mono text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span> Solved
+              </span>
+</div>
+</div>
+<!-- P3 Secret Code Card -->
+<div class="bg-surface-container-low border border-outline-variant rounded p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-on-surface flex items-center gap-1.5 font-mono">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span> P3 Code
+              </span>
+<span class="font-mono text-[11px] text-on-surface-variant">Cracked by <strong class="text-on-surface">P4</strong></span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest px-3 py-2 rounded border border-outline-variant">
+<div class="flex items-center gap-2 font-mono text-lg font-bold text-primary tracking-widest">
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">2</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">6</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">8</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">1</span>
+</div>
+<span class="text-xs font-mono text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span> Solved
+              </span>
+</div>
+</div>
+<!-- P4 Secret Code Card -->
+<div class="bg-surface-container-low border border-outline-variant rounded p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-on-surface flex items-center gap-1.5 font-mono">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span> P4 Code
+              </span>
+<span class="font-mono text-[11px] text-on-surface-variant">Cracked by <strong class="text-on-surface">P1</strong></span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest px-3 py-2 rounded border border-outline-variant">
+<div class="flex items-center gap-2 font-mono text-lg font-bold text-primary tracking-widest">
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">4</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">9</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">3</span>
+<span class="px-2 py-0.5 bg-surface-container rounded border border-outline-variant">0</span>
+</div>
+<span class="text-xs font-mono text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span> Solved
+              </span>
+</div>
+</div>
+<!-- Bottom Telemetry note -->
+<div class="bg-surface-container-highest/60 rounded p-2.5 mt-1 border border-outline-variant text-[11px] font-mono text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">analytics</span>
+<span class="">Loop integrity unbroken: Circular parity verified across all 4 keys.</span>
+</div>
+</div>
+</section>
+</div>
+<!-- POST-MATCH ACTIONS (Primary & Secondary Actions) -->
+<div class="mt-8 pt-6 border-t border-outline-variant flex flex-col sm:flex-row items-center justify-end gap-3.5">
+<button class="w-full sm:w-auto px-5 py-3 rounded-lg text-sm font-semibold tracking-normal text-on-surface bg-transparent border border-outline-variant hover:bg-surface-container hover:border-outline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-colors duration-150 flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-base">group_add</span>
+<span class="">New Game / Change Players</span>
+</button>
+<button class="w-full sm:w-auto px-6 py-3 rounded-lg text-sm font-semibold tracking-normal text-on-primary bg-primary hover:opacity-90 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all duration-150 flex items-center justify-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-base" data-weight="fill">replay</span>
+<span class="">Play Again (Same Target Loop)</span>
+</button>
+</div>
+</main>
+<!-- BOTTOM NAV BAR (from Shared Components JSON) -->
+<!-- Renders on mobile, and desktop users also retain global bottom anchor -->
+
+
+
+</body></html>
