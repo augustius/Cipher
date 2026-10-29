@@ -8,7 +8,10 @@
     "userInterfaceStyle": "dark",
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.auyotoc.cipher"
+      "bundleIdentifier": "com.auyotoc.cipher",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -41,6 +44,16 @@
     "backgroundColor": "#0f131d",
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "f0000f21-2fff-4d4c-a790-63af3f6258d6"
+      }
     }
   }
 }
