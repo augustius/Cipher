@@ -30,7 +30,7 @@ export function TurnHeader(props: TurnHeaderProps) {
         <View className="flex-row items-center gap-2">
           <Feather name="lock" size={18} color={colors.accent} />
 
-          <Text className="font-display text-xl text-accent">Cipher</Text>
+          <Text className="font-display text-xl text-accent">1A2B</Text>
         </View>
 
         <IconButton icon="more-horizontal" label="Match menu" onPress={onMenu} />

@@ -1,12 +1,12 @@
-# Product Requirements Document (PRD) & Product Brief: **Cipher**
+# Product Requirements Document (PRD) & Product Brief: **1A2B**
 
 ---
 
 ## 1. Executive Summary & Vision
 
-**Cipher** is a distraction-free, offline pass-and-play numeric deduction mobile game for 2 to 4 local players, plus a Solo puzzle mode. Players crack each other's secret 4-digit codes (no repeated digits) through circular relay guessing and precise deductive feedback (`[M] Match` and `[F] Found`).
+**1A2B** is a distraction-free, offline pass-and-play numeric deduction mobile game for 2 to 4 local players, plus a Solo puzzle mode. Players crack each other's secret 4-digit codes (no repeated digits) through circular relay guessing and precise deductive feedback (`[M] Match` and `[F] Found`).
 
-**Cipher** runs 100% offline on a single shared device. It has a focused, minimal, developer-grade aesthetic (Obsidian dark UI) with zero clutter: no account creation, no online matchmaking, no ads, no analytics, and no tab bars.
+**1A2B** runs 100% offline on a single shared device. It has a focused, minimal, developer-grade aesthetic (Obsidian dark UI) with zero clutter: no account creation, no online matchmaking, no ads, no analytics, and no tab bars.
 
 ---
 
@@ -87,8 +87,8 @@ Traditional "Bulls and Cows" terminology is replaced with:
 
 **Handoff screen** (shared component): full-screen "Pass to **[Name]** →" with a tap-to-continue button. It appears after each code lock, between guessing turns, and on resume. It is the only thing shown while the device changes hands.
 
-### Screen 1: Lobby (`CIPHER`)
-- App title (`CIPHER`) and offline mode badge.
+### Screen 1: Lobby (`1A2B`)
+- App title (`1A2B`) and offline mode badge.
 - Rule primer: concise cards explaining `[M] Match` and `[F] Found`.
 - Mode selector: segmented `2P` / `3P` / `4P` / `Solo`.
 - Turn timer selector: `None` / `1m` / `3m` / `5m`.

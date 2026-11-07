@@ -140,7 +140,7 @@ export default function Lobby() {
       <View className="flex-row items-center justify-between py-2">
         <View className="w-10" />
 
-        <Text className="font-mono text-sm tracking-[4px] text-muted">CIPHER</Text>
+        <Text className="font-mono text-sm tracking-[4px] text-muted">1A2B</Text>
 
         <IconButton
           icon={state.soundOn ? 'volume-2' : 'volume-x'}
